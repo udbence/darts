@@ -7,18 +7,19 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+    <!-- Kezdő lap, játékosok száma-->
     <div class="container" id="step-1">
         <h1>Darts Számoló</h1>
         <label for="player-count">Hány játékos lesz?</label>
         <input type="number" id="player-count" min="1" max="10" value="2">
         <button onclick="generateNameInputs()">Tovább a nevekhez</button>
     </div>
-
+    <!--Játékosok sorrend-->
     <div class="container hidden" id="step-2">
-        <h2>Játékosok nevei</h2>
+        <h2>Játékosok és Sorrend</h2>
+        <p class="subtitle">Állítsd be, ki kezdje az első meccset!</p>
         <div id="name-inputs"></div>
-        <button onclick="startGame()">Játék indítása (501)</button>
+        <button onclick="startGame()">Játék indítása</button>
     </div>
 
     <div class="container hidden" id="step-3">
@@ -27,7 +28,11 @@
         
         <div id="throw-section">
             <h3 id="current-player-name">Játékos dob</h3>
-            <p id="darts-info">Hátralévő nyilak a körben: <strong id="darts-left">3</strong></p>
+            <p id="darts-info"><strong id="darts-left"></strong></p>
+            
+            <div id="checkout-suggestion" class="hidden">
+                Kiszálló: <strong id="checkout-path"></strong>
+            </div>
             
             <div class="modifiers">
                 <button id="btn-szimpla" class="mod-btn active" onclick="setMultiplier(1)">Szimpla</button>
@@ -38,10 +43,25 @@
             <div id="numpad" class="numpad"></div>
 
             <div class="action-buttons">
-                <button class="btn-secondary" id="undo-btn" onclick="undoThrow()">Visszavonás (1 nyíl)</button>
+                <button class="btn-secondary" id="undo-btn" onclick="undoThrow()">Visszavonás</button>
             </div>
             
             <div class="message" id="error-message"></div>
+        </div>
+
+        <div id="stats-section">
+            <h3>Statisztikák</h3>
+            <table id="stats-table">
+                <thead>
+                    <tr>
+                        <th>Név</th>
+                        <th>Átlag</th>
+                        <th>Legjobb kör</th>
+                        <th>Nyert meccs</th>
+                    </tr>
+                </thead>
+                <tbody id="stats-body"></tbody>
+            </table>
         </div>
     </div>
 
