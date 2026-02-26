@@ -155,9 +155,22 @@ function updateScoreboard() {
 
     players.forEach((player, index) => {
         const isCurrent = index === currentPlayerIndex;
+        let dartsHtml = '';
+
+        if (isCurrent) {
+            const dartsLeft = 3 - dartsThrownInTurn;
+            for (let i = 0; i < dartsLeft; i++) {
+                // A "dart.png" helyére írd a saját képed nevét, ha más kiterjesztésű!
+                dartsHtml += `<img src="darts.jpg" class="dart-icon" alt="nyíl">`;
+            }
+        }
+
         scoreboard.innerHTML += `
             <li class="player-row ${isCurrent ? 'active-player' : ''}">
+            
                 <span>${player.name}</span>
+                <div class="dart-container">${dartsHtml}</div>
+                 
                 <span class="score">${player.score}</span>
             </li>
         `;
