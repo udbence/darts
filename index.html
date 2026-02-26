@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darts Számoló</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container" id="step-1">
+        <h1>Darts Számoló</h1>
+        <label for="player-count">Hány játékos lesz?</label>
+        <input type="number" id="player-count" min="1" max="10" value="2">
+        <button onclick="generateNameInputs()">Tovább a nevekhez</button>
+    </div>
+
+    <div class="container hidden" id="step-2">
+        <h2>Játékosok nevei</h2>
+        <div id="name-inputs"></div>
+        <button onclick="startGame()">Játék indítása (501)</button>
+    </div>
+
+    <div class="container hidden" id="step-3">
+        <h2>Aktuális állás</h2>
+        <ul class="player-list" id="scoreboard"></ul>
+        
+        <div id="throw-section">
+            <h3 id="current-player-name">Játékos dob</h3>
+            <p id="darts-info">Hátralévő nyilak a körben: <strong id="darts-left">3</strong></p>
+            
+            <div class="modifiers">
+                <button id="btn-szimpla" class="mod-btn active" onclick="setMultiplier(1)">Szimpla</button>
+                <button id="btn-dupla" class="mod-btn" onclick="setMultiplier(2)">Dupla</button>
+                <button id="btn-tripla" class="mod-btn" onclick="setMultiplier(3)">Tripla</button>
+            </div>
+
+            <div id="numpad" class="numpad"></div>
+
+            <div class="action-buttons">
+                <button class="btn-secondary" id="undo-btn" onclick="undoThrow()">Visszavonás (1 nyíl)</button>
+            </div>
+            
+            <div class="message" id="error-message"></div>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
